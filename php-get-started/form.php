@@ -23,13 +23,14 @@
       $ok = true;
 
       // Form Validation
+      // Name Field Rules
       if (!isset($_POST['name']) || $_POST['name'] === '') {
         $ok = false;
       } else {
         $name = $_POST['name'];
       }
 
-      // Password Validation Rules
+      // Password Field Rules
       if (!isset($_POST['password']) || $_POST['password'] === '') {
         $name = $_POST['name'];
         $ok = false;
@@ -37,35 +38,35 @@
         $password = $_POST['password'];
       }
 
-      // Gender Validation Rules
+      // Gender Radio Rules
       if (!isset($_POST['gender']) || $_POST['gender'] === '') {
         $ok = false;
       } else {
         $gender = $_POST['gender'];
       }
 
-      // Favorite Color Validation Rules
+      // Favorite Color Select Rules
       if (!isset($_POST['color']) || $_POST['color'] === '') {
         $ok = false;
       } else {
         $color = $_POST['color'];
       }
 
-      // Languages Validation Rules
+      // Languages Select Rules
       if (!isset($_POST['languages']) || !is_array($_POST['languages']) || count($_POST['languages'] === 0)) {
         $ok = false;
       } else {
         $languages = $_POST['languages'];
       }
 
-      // Comments Validation Rules
+      // Comments Textarea Rules
       if (!isset($_POST['comments']) || $_POST['comments'] === '') {
         $ok = false;
       } else {
         $comments = $_POST['comments'];
       }
 
-      // Terms and Conditions Validation Rules
+      // Terms and Conditions Checkbox Rules
       if (!isset($_POST['tc']) || $_POST['tc'] === '') {
         $ok = false;
       } else {
@@ -100,8 +101,16 @@
         echo htmlspecialchars($password);
       ?>"><br>
       Gender:
-        <input type="radio" name="gender" value="f">female
-        <input type="radio" name="gender" value="m">male <br>
+        <input type="radio" name="gender" value="f"  <?php
+          if ($gender === 'f') {
+            echo 'checked';
+          }
+         ?>>female
+        <input type="radio" name="gender" value="m"  <?php
+          if ($gender === 'm') {
+            echo 'checked';
+          }
+         ?>>male <br>
       Favorite Color:
         <select name="color" id="">
           <option value="">Select One</option>
@@ -120,7 +129,11 @@
           <textarea name="comments" rows="8" cols="40"  value="<?php
             echo htmlspecialchars($comments);
           ?>"></textarea><br>
-      <input type="checkbox" name="tc" value="ok">I accept the Terms and Conditions<br>
+      <input type="checkbox" name="tc" value="ok" <?php
+        if ($tc === 'ok') {
+          echo 'checked';
+        }
+       ?>>I accept the Terms and Conditions<br>
       <input type="submit" name="submit" value="Submit">
     </form>
 
