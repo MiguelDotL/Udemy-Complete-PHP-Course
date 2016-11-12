@@ -55,22 +55,6 @@
         mysqli_query($db, $sql);
         mysqli_close($db);
         echo '<p>User Added</p>';
-
-        // printf('Username: %s<br>
-        //         Password: %s<br>
-        //         Gender: %s<br>
-        //         Favorite Color: %s<br>
-        //         Language(s): %s<br>
-        //         Comments: %s<br>
-        //         T&amp;C: %s',
-        //         htmlspecialchars($name),
-        //         htmlspecialchars($password),
-        //         htmlspecialchars($gender),
-        //         htmlspecialchars($color),
-        //         htmlspecialchars(implode($languages, ' ')),
-        //         htmlspecialchars($comments),
-        //         htmlspecialchars($tc)
-        // );
       }
     }
   ?>
