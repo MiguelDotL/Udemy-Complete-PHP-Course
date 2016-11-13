@@ -1,0 +1,19 @@
+#nav-items{
+  margin: 1rem 0 2rem 0;
+
+}
+#nav-items li{
+  display: inline;
+  padding: 0 1rem 0 0;
+}
+#nav-items li a {
+  color: #5d5d5d;
+  /*font-family: "Open Sans", sans-serif;*/
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 0 0 0.4rem 0;
+}
+#nav-items li a:hover {
+  font-weight: bold;
+  border-bottom: 3px solid #5d5d5d;
+}

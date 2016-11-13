@@ -8,12 +8,15 @@
     <title>PHP FORM</title>
   </head>
   <body>
+    <?php
+
+    readfile('nav.tmpl.html'); ?>
     <ul>
       <?php
 
         $db = mysqli_connect('localhost', 'root', '', 'php');
         $sql = 'SELECT * FROM users';
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($db, $sql );
 
         foreach ($result as $row)  {
           printf('<li><span style="color: %s;">%s (%s)</span>

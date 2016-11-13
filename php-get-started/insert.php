@@ -8,9 +8,12 @@
     <title>PHP FORM</title>
   </head>
   <body>
+
   <?php
+    readfile('nav.tmpl.html');
 
     $name = '';
+    $password = '';
     $gender = '';
     $color = '';
 
@@ -25,6 +28,13 @@
         $ok = false;
       } else {
         $name = $_POST['name'];
+      }
+
+      // Password Field Rules
+      if (!isset($_POST['password']) || $_POST['password'] === '') {
+        $ok = false;
+      } else {
+        $password = $_POST['password'];
       }
 
       // Gender Radio Rules
@@ -43,12 +53,14 @@
 
       // Form POST Formatting
       if ($ok) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         // mysqli_connect(host:string, user:string, password:string, database:string, socket:string);
         $db = mysqli_connect('localhost', 'root', '', 'php');
         $sql = sprintf(
-          "INSERT INTO users(name, gender, color)
-          VALUES ('%s', '%s', '%s')",
+          "INSERT INTO users(name, password, gender, color)
+          VALUES ('%s', '%s', '%s', '%s')",
           mysqli_real_escape_string($db, $name),
+          mysqli_real_escape_string($db, $hash),
           mysqli_real_escape_string($db, $gender),
           mysqli_real_escape_string($db, $color)
         );
@@ -62,6 +74,8 @@
       Username: <input type="text" name="name" value="<?php
         echo htmlspecialchars($name);
       ?>"><br>
+
+      Password: <input type="text" name="password"><br>
 
       Gender:
         <input type="radio" name="gender" value="f"  <?php

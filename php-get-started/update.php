@@ -1,4 +1,6 @@
 <?php
+  require 'auth.php';
+
   if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $id = $_GET['id'];
   } else {
@@ -16,6 +18,7 @@
   </head>
   <body>
   <?php
+    readfile('nav.tmpl.html');
 
     $name = '';
     $gender = '';
